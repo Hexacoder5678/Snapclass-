@@ -13,11 +13,11 @@ def main():
         layout="wide"
     )
 
-    # 🛠️ THE ULTIMATE FULL-APP THEME & GLOBAL CONTRAST FIX
+    # 🛠️ THE ULTIMATE FULL-APP DESIGN CONFIG (Fixes everything: Inputs, Modals, Toasts & ALL Buttons)
     st.markdown(
         """
         <style>
-        /* 1. TOAST NOTIFICATIONS FIX: Toasts ka background dark aur text white lock karo */
+        /* 1. TOAST NOTIFICATIONS FIX */
         div[data-testid="stToast"] {
             background-color: #1e222b !important;
             border: 1px solid #ff4b4b !important;
@@ -30,7 +30,7 @@ def main():
             font-weight: 500 !important;
         }
 
-        /* 2. DIALOG / POPUP MODALS FIX: Modals ka background white aur text black */
+        /* 2. DIALOG / POPUP MODALS FIX */
         div[role="dialog"], 
         div[data-testid="stModal"],
         div[data-testid="stDialog"] div,
@@ -43,7 +43,7 @@ def main():
             color: #111111 !important;
         }
 
-        /* 3. INPUT BOXES FIX: Background white aur typed text pure black */
+        /* 3. INPUT BOXES FIX */
         .stTextInput input {
             color: #111111 !important; 
             background-color: #ffffff !important; 
@@ -56,7 +56,7 @@ def main():
             box-shadow: 0 0 0 1px #ff4b4b !important;
         }
 
-        /* 4. WIDGET LABELS & TITLES FIX: 'Enter username' aur 'Enter password' ko forceful black karo */
+        /* 4. WIDGET LABELS & TITLES FIX */
         label[data-testid="stWidgetLabel"] p, 
         .stWidgetLabel p,
         div[data-testid="stWidgetLabel"] span,
@@ -67,7 +67,7 @@ def main():
             opacity: 1 !important;
         }
 
-        /* 5. HEADINGS & MARKDOWN FIX: Badi headings aur baaki ke normal texts ko sharp black karo */
+        /* 5. HEADINGS & MARKDOWN FIX */
         div[data-testid="stMarkdownContainer"] h1,
         div[data-testid="stMarkdownContainer"] h2,
         div[data-testid="stMarkdownContainer"] h3,
@@ -78,27 +78,36 @@ def main():
             color: #111111 !important;
         }
 
-        /* 6. BUTTONS SOLID STYLE FIX: Restore full solid colors and override look */
-        .stButton>button {
+        /* 6. BUTTONS SOLID STYLE FIX: Targets Normal Buttons, File Uploaders, and Camera/Snapshot Buttons */
+        .stButton>button, 
+        div[data-testid="stFileUploader"] button,
+        div[data-testid="stCameraInput"] button,
+        button[data-testid="baseButton-secondary"],
+        button[data-testid="baseButton-primary"] {
             border-width: 1px !important;
             font-weight: 600 !important;
             transition: all 0.2s ease !important;
         }
         
-        /* Buttons text inside wrappers will automatically adapt safely to button types */
+        /* Force background fill and text contrast on ALL types of buttons */
         .stButton>button p, 
         .stButton>button span,
-        div[data-testid="stBaseButton-primary"] p,
-        div[data-testid="stBaseButton-secondary"] p {
+        div[data-testid="stFileUploader"] button p,
+        div[data-testid="stFileUploader"] button span,
+        div[data-testid="stCameraInput"] button p,
+        div[data-testid="stCameraInput"] button span,
+        button[data-testid="baseButton-secondary"] p,
+        button[data-testid="baseButton-primary"] p {
             color: #ffffff !important;
         }
         
-        /* Tertiary or border-only buttons fallback to safe visible dark states if transparent */
-        div[data-testid="stBaseButton-tertiary"] p {
+        /* Tertiary (borderless) buttons fallback safely to dark grey text */
+        button[data-testid="baseButton-tertiary"] p {
             color: #111111 !important;
         }
 
-        .stButton>button:active {
+        /* Clean active/click scaling effect */
+        .stButton>button:active, div[data-testid="stFileUploader"] button:active, div[data-testid="stCameraInput"] button:active {
             transform: scale(0.98) !important;
         }
         </style>
