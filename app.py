@@ -13,7 +13,7 @@ def main():
         layout="wide"
     )
 
-    # 🛠️ THE MASTER SYSTEM CONFIG: Text, Inputs, Dialogs, and Toasts visibility
+    # 🛠️ THE ULTIMATE FULL-APP THEME & GLOBAL CONTRAST FIX
     st.markdown(
         """
         <style>
@@ -74,16 +74,32 @@ def main():
         div[data-testid="stMarkdownContainer"] p,
         span[data-font="sans serif"],
         div[data-testid="stVerticalBlock"] p,
-        .stApp h1, .stApp h2, .stApp h3 {
+        .stApp h1, .stApp h2, .stApp p, .stApp h3 {
             color: #111111 !important;
         }
 
-        /* 6. BUTTONS FIX: Main buttons ke andar ka text white lock rahe taaki background par chamke */
-        .stButton>button, 
-        .stButton>button p, 
-        .stButton>button span {
-            color: #ffffff !important;
+        /* 6. BUTTONS SOLID STYLE FIX: Restore full solid colors and override look */
+        .stButton>button {
+            border-width: 1px !important;
             font-weight: 600 !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        /* Buttons text inside wrappers will automatically adapt safely to button types */
+        .stButton>button p, 
+        .stButton>button span,
+        div[data-testid="stBaseButton-primary"] p,
+        div[data-testid="stBaseButton-secondary"] p {
+            color: #ffffff !important;
+        }
+        
+        /* Tertiary or border-only buttons fallback to safe visible dark states if transparent */
+        div[data-testid="stBaseButton-tertiary"] p {
+            color: #111111 !important;
+        }
+
+        .stButton>button:active {
+            transform: scale(0.98) !important;
         }
         </style>
         """,
